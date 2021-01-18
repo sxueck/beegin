@@ -35,8 +35,8 @@ func (e *Engine) POST(pattern string, h HandlerFunc) {
 	e.router.addRoute(http.MethodPost, pattern, h)
 }
 
-func (e *Engine) Run(ip, port string) error {
-	fmt.Printf("=> listen on %s port %s\n", ip, port)
+func (e *Engine) Run(ip string, port int) error {
+	fmt.Printf("=> listen on %s port %d\n", ip, port)
 	return http.ListenAndServe(fmt.Sprintf("%s:%s", ip, port), e)
 }
 
