@@ -37,7 +37,7 @@ func (e *Engine) POST(pattern string, h HandlerFunc) {
 
 func (e *Engine) Run(ip string, port int) error {
 	fmt.Printf("=> listen on %s port %d\n", ip, port)
-	return http.ListenAndServe(fmt.Sprintf("%s:%s", ip, port), e)
+	return http.ListenAndServe(fmt.Sprintf("%s:%d", ip, port), e)
 }
 
 func (e *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {

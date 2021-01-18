@@ -2,6 +2,7 @@ package beegin
 
 import (
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"reflect"
@@ -30,6 +31,15 @@ func newContext(w http.ResponseWriter, req *http.Request) *Context {
 
 func (c *Context) PostForm(key string) string {
 	return c.Req.FormValue(key)
+}
+
+func (c *Context) ExBody() []byte {
+	var body []byte
+	_, err := ioutil.ReadAll(c.Req.Body)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return body
 }
 
 func (c *Context) Query(key string) string {
