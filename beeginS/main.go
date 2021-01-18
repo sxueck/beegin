@@ -1,7 +1,7 @@
 package main
 
 import (
-	"beegin"
+	"github.com/sxueck/beegin"
 	"log"
 	"net/http"
 )
