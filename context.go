@@ -34,8 +34,7 @@ func (c *Context) PostForm(key string) string {
 }
 
 func (c *Context) ExBody() []byte {
-	var body []byte
-	_, err := ioutil.ReadAll(c.Req.Body)
+	body, err := ioutil.ReadAll(c.Req.Body)
 	if err != nil {
 		log.Fatal(err)
 	}
