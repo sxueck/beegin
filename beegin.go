@@ -44,3 +44,10 @@ func (e *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	c := newContext(w, req)
 	e.router.handle(c)
 }
+
+func (e *Engine) WrapHandler(h http.Handler) HandlerFunc {
+	return func(c *Context) error {
+		h.ServeHTTP(c.Writer, c.Req)
+		return nil
+	}
+}
